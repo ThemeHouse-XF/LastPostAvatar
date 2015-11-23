@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<addon addon_id="ThemeHouse_LastPostAvatar" title="[⌂] Last Post Avatar" version_string="1.1.8d" version_id="1447261019" url="http://xf.themehouse.io/" install_callback_class="ThemeHouse_Install" install_callback_method="install" uninstall_callback_class="ThemeHouse_Install" uninstall_callback_method="uninstall">
+  <admin_navigation/>
+  <admin_permissions/>
+  <admin_style_properties/>
+  <admin_templates/>
+  <admin_template_modifications/>
+  <code_events/>
+  <code_event_listeners>
+    <listener event_id="controller_pre_dispatch" execute_order="10" callback_class="ThemeHouse_Listener_ControllerPreDispatch" callback_method="controllerPreDispatch" active="1" hint="" description=""/>
+    <listener event_id="file_health_check" execute_order="10" callback_class="ThemeHouse_LastPostAvatar_Listener_FileHealthCheck" callback_method="fileHealthCheck" active="1" hint="" description=""/>
+    <listener event_id="init_dependencies" execute_order="10" callback_class="ThemeHouse_Listener_InitDependencies" callback_method="initDependencies" active="1" hint="" description=""/>
+    <listener event_id="load_class" execute_order="10" callback_class="ThemeHouse_LastPostAvatar_Listener_LoadClass" callback_method="loadClassController" active="0" hint="ThemeHouse_SocialGroups_ControllerPublic_SocialCategory" description="ThemeHouse_SocialGroups_ControllerPublic_SocialCategory (For XenForo 1.2 and above)" compatibility_switch="1"/>
+    <listener event_id="load_class" execute_order="10" callback_class="ThemeHouse_LastPostAvatar_Listener_LoadClass" callback_method="loadClassController" active="0" hint="ThemeHouse_SocialGroups_ControllerPublic_SocialForum" description="ThemeHouse_SocialGroups_ControllerPublic_SocialForum (For XenForo 1.2 and above)" compatibility_switch="1"/>
+    <listener event_id="load_class" execute_order="10" callback_class="ThemeHouse_LastPostAvatar_Listener_LoadClass" callback_method="loadClassController" active="0" hint="XenForo_ControllerPublic_Forum" description="XenForo_ControllerPublic_Forum (For XenForo 1.2 and above)" compatibility_switch="1"/>
+    <listener event_id="load_class" execute_order="10" callback_class="ThemeHouse_LastPostAvatar_Listener_LoadClass" callback_method="loadClassModel" active="0" hint="ThemeHouse_SocialGroups_Model_SocialForum" description="ThemeHouse_SocialGroups_Model_SocialForum (For XenForo 1.2 and above)" compatibility_switch="1"/>
+    <listener event_id="load_class" execute_order="10" callback_class="ThemeHouse_LastPostAvatar_Listener_LoadClass" callback_method="loadClassModel" active="0" hint="XenForo_Model_Node" description="XenForo_Model_Node (For XenForo 1.2 and above)" compatibility_switch="1"/>
+    <listener event_id="load_class" execute_order="10" callback_class="ThemeHouse_LastPostAvatar_Listener_LoadClass" callback_method="loadClassModel" active="0" hint="XenForo_Model_Thread" description="XenForo_Model_Thread (For XenForo 1.2 and above)" compatibility_switch="1"/>
+    <listener event_id="load_class" execute_order="10" callback_class="ThemeHouse_LastPostAvatar_Listener_LoadClass" callback_method="loadClassModel" active="0" hint="XenForo_Model_ThreadWatch" description="XenForo_Model_ThreadWatch (For XenForo 1.2 and above)" compatibility_switch="1"/>
+    <listener event_id="load_class_controller" execute_order="10" callback_class="ThemeHouse_LastPostAvatar_Listener_LoadClass" callback_method="loadClassController" active="1" hint="" description="(For XenForo 1.1 and below)" compatibility_switch="1"/>
+    <listener event_id="load_class_model" execute_order="10" callback_class="ThemeHouse_LastPostAvatar_Listener_LoadClass" callback_method="loadClassModel" active="1" hint="" description="(For XenForo 1.1 and below)" compatibility_switch="1"/>
+    <listener event_id="template_create" execute_order="10" callback_class="ThemeHouse_LastPostAvatar_Listener_TemplateCreate" callback_method="templateCreate" active="1" hint="" description="(For XenForo 1.1 and below)" compatibility_switch="1"/>
+    <listener event_id="template_hook" execute_order="20" callback_class="ThemeHouse_LastPostAvatar_Listener_TemplateHook" callback_method="templateHook" active="1" hint="" description="(For XenForo 1.1 and below)" compatibility_switch="1"/>
+    <listener event_id="template_post_render" execute_order="20" callback_class="ThemeHouse_LastPostAvatar_Listener_TemplatePostRender" callback_method="templatePostRender" active="1" hint="" description="(For XenForo 1.1 and below)" compatibility_switch="1"/>
+  </code_event_listeners>
+  <cron/>
+  <email_templates/>
+  <email_template_modifications/>
+  <optiongroups>
+    <group group_id="th_lastPostAvatar" display_order="2000" debug_only="0"/>
+    <option option_id="th_lastPostAvatar_lastPostTitleMaxLength" edit_format="spinbox" data_type="integer" can_backup="1">
+      <default_value>25</default_value>
+      <edit_format_params/>
+      <sub_options/>
+      <relation group_id="th_lastPostAvatar" display_order="1"/>
+    </option>
+  </optiongroups>
+  <permissions>
+    <permission_groups/>
+    <permissions/>
+    <interface_groups/>
+  </permissions>
+  <phrases>
+    <phrase title="option_group_th_lastPostAvatar" version_id="1362758813" version_string="1.1.4"><![CDATA[Last Post Avatar by ThemeHouse]]></phrase>
+    <phrase title="option_group_th_lastPostAvatar_description" version_id="1362758813" version_string="1.1.4"><![CDATA[Options for the Last Post Avatar by ThemeHouse add-on.]]></phrase>
+    <phrase title="option_th_lastPostAvatar_lastPostTitleMaxLength" version_id="1362758813" version_string="1.1.4"><![CDATA[Maximum characters for last post thread title]]></phrase>
+    <phrase title="option_th_lastPostAvatar_lastPostTitleMaxLength_explain" version_id="1363184071" version_string="1.1.6a"><![CDATA[On forum lists, the last post title will be trimmed it if it has a number of characters greater than this. Setting this to a lower value may be required for some styles.<br/><br/>
+(Note: this option is no longer used in XenForo 1.2 and above).]]></phrase>
+  </phrases>
+  <route_prefixes/>
+  <style_properties/>
+  <templates>
+    <template title="th_lastpostavatar.css" version_id="1372949965" version_string="1.1.7"><![CDATA[.lastPostInfo a.avatar img {
+border: 1px solid #c4c4c4 !important;
+border-radius: 1px !important;
+padding: 1px;
+float: left;
+width: 28px;
+height: 28px;
+margin-right: 1px;
+}
+
+.nodeLastPost a.avatar img {
+border: 1px solid #c4c4c4 !important;
+border-radius: 3px !important;
+padding: 2px;
+float: left;
+width: 23px;
+height: 23px;
+margin-right: 4px;
+margin-left: -7px;
+}
+
+.discussionListItem .lastPostInfo dt {
+    margin-left: 33px;
+}
+
+<xen:if is="{$xenOptions.currentVersionId} >= 1020000 && {xen:property enableResponsive}">
+@media (max-width:{xen:property maxResponsiveMediumWidth})
+{
+	.lastPostInfo a.avatar img
+	{
+		display: none;
+	}
+
+	.nodeLastPost a.avatar img
+	{
+		display: none;
+	}
+}
+</xen:if>]]></template>
+    <template title="th_node_category_avatar_lastpostavatar" version_id="1363184071" version_string="1.1.6a"><![CDATA[<xen:if is="!{$category.privateInfo} && {$category.lastPost.date}">
+	<xen:require css="th_lastpostavatar.css" />
+	<xen:hook name="th_node_category_avatar_last_post_avatar">
+		<xen:avatar user="$category.lastPost" size="s" img="true" />
+	</xen:hook>
+</xen:if>]]></template>
+    <template title="th_node_forum_avatar_lastpostavatar" version_id="1363184071" version_string="1.1.6a"><![CDATA[<xen:if is="!{$forum.privateInfo} && {$forum.lastPost.date}">
+	<xen:require css="th_lastpostavatar.css" />
+	<xen:hook name="th_node_forum_avatar_last_post_avatar">
+		<xen:avatar user="$forum.lastPost" size="s" img="true" />
+	</xen:hook>
+</xen:if>]]></template>
+    <template title="th_node_library_avatar_lastpostavatar" version_id="1363184071" version_string="1.1.6a"><![CDATA[<xen:if is="!{$library.privateInfo} && {$library.lastArticlePage.date}">
+	<xen:require css="th_lastpostavatar.css" />
+	<xen:hook name="th_node_library_avatar_last_post_avatar">
+		<xen:avatar user="$library.lastArticlePage" size="s" img="true" />
+	</xen:hook>
+</xen:if>]]></template>
+    <template title="th_thread_list_item_lastpostavatar" version_id="1352110618" version_string="1.1.1"><![CDATA[<xen:require css="th_lastpostavatar.css" />
+<xen:hook name="th_thread_list_avatar_last_post_avatar">
+	<xen:if is="is_array({$thread.lastPostInfo})">
+		<xen:avatar user="$thread.lastPostInfo" size="s" img="true" />
+	</xen:if>
+</xen:hook>]]></template>
+  </templates>
+  <public_template_modifications>
+    <modification template="footer" modification_key="th_copyrightNotice_lastPostAvatar" description="Copyright notice for [⌂] Last Post Avatar" execution_order="1" enabled="1" action="callback">
+      <find><![CDATA[/{xen:phrase (?:xenforo|extra)_copyright}/]]></find>
+      <replace><![CDATA[ThemeHouse_Listener_InitDependencies::copyrightNotice]]></replace>
+    </modification>
+    <modification template="th_library_level_2_library" modification_key="th_libraryLevel2_lastPostAvatar" description="Adds last poster's avatar to the last post information in the forum node information." execution_order="10" enabled="1" action="preg_replace">
+      <find><![CDATA[#<div[^>]*class="nodeLastPost[^"]*"[^>]*>#Us]]></find>
+      <replace><![CDATA[${0}
+<xen:include template="th_node_library_avatar_lastpostavatar" />]]></replace>
+    </modification>
+    <modification template="node_category_level_2" modification_key="th_nodeCategoryLevel2_lastPostAvatar" description="Adds last poster's avatar to the last post information in the category node information." execution_order="10" enabled="1" action="preg_replace">
+      <find><![CDATA[#<div[^>]*class="nodeLastPost[^"]*"[^>]*>#Us]]></find>
+      <replace><![CDATA[${0}
+<xen:include template="th_node_category_avatar_lastpostavatar" />]]></replace>
+    </modification>
+    <modification template="node_forum_level_2" modification_key="th_nodeForumLevel2_lastPostAvatar" description="Adds last poster's avatar to the last post information in the forum node information." execution_order="10" enabled="1" action="preg_replace">
+      <find><![CDATA[#<div[^>]*class="nodeLastPost[^"]*"[^>]*>#Us]]></find>
+      <replace><![CDATA[${0}
+<xen:include template="th_node_forum_avatar_lastpostavatar" />]]></replace>
+    </modification>
+    <modification template="th_node_level_2_socialgroups" modification_key="th_nodeSocialCategoryLevel2_lastPostAvatar" description="Adds last poster's avatar to the last post information in the social category node information." execution_order="10" enabled="1" action="preg_replace">
+      <find><![CDATA[#<div[^>]*class="nodeLastPost[^"]*"[^>]*>#Us]]></find>
+      <replace><![CDATA[${0}
+<xen:include template="th_node_forum_avatar_lastpostavatar" />]]></replace>
+    </modification>
+    <modification template="th_social_forum_list_item_socialgroups" modification_key="th_socialForumListItem_lastPostAvatar" description="Adds last poster's avatar to the last post information in the social forum node information." execution_order="10" enabled="1" action="preg_replace">
+      <find><![CDATA[#<div[^>]*class="nodeLastPost[^"]*"[^>]*>#Us]]></find>
+      <replace><![CDATA[${0}
+<xen:include template="th_node_forum_avatar_lastpostavatar" />]]></replace>
+    </modification>
+    <modification template="thread_list_item" modification_key="th_threadListItem_lastPostAvatar" description="Adds last poster's avatar to the last post information in the thread list item." execution_order="10" enabled="1" action="preg_replace">
+      <find><![CDATA[#(<dl class="lastPostInfo">)(.*</dl>)#Us]]></find>
+      <replace><![CDATA[${1}
+<xen:include template="th_thread_list_item_lastpostavatar" />
+${2}]]></replace>
+    </modification>
+  </public_template_modifications>
+  <bb_code_media_sites/>
+  <bb_codes/>
+</addon>
